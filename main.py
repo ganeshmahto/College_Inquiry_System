@@ -1,19 +1,25 @@
+import streamlit as st
 from graph import build_graph
+
+st.set_page_config(page_title="College Inquiry System")
+
+st.title("🎓 College Inquiry System")
 
 graph = build_graph()
 
-query = input("Enter your question: ")
+query = st.text_input("Enter your question")
 
-result = graph.invoke({
-    "query": query,
-    "intent": "",
-    "response": ""
-})
+if st.button("Ask"):
 
-print("\n**RESULT**")
-print(result["response"])
+    if query.strip():
 
+        result = graph.invoke({
+            "query": query,
+            "intent": "",
+            "response": ""
+        })
 
+        st.success(result["response"])
 
-
-
+    else:
+        st.warning("Please enter a question.")
