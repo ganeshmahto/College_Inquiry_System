@@ -12,7 +12,9 @@ def get_llm_response(message: str, system_prompt: str = None) -> str:
     api_key = os.getenv("GROQ_API_KEY")
 
     if not api_key:
-        raise ValueError("GROQ_API_KEY not found in .env file")
+        raise ValueError(
+            "GROQ_API_KEY not found. Please configure it in Streamlit Secrets or .env"
+        )
 
     llm = ChatGroq(
         api_key=api_key,
