@@ -1,0 +1,4 @@
+python-dotenv==1.2.1
+langchain==1.2.12
+langchain-groq
+langgraph==1.0.9
